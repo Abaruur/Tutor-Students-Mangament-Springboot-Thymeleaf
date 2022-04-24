@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lessons</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: ghostwhite">
+<div class="topnav">
+    <a th:href="@{/tutor/{tutorId}(tutorId=${tutorId})}">Home</a>
+    <a th:href="@{/tutor/{tutorId}(tutorId=${tutorId})}">Classes</a>
+    <a class="active" th:href="@{/lessons/list/{tutorId}(tutorId=${tutorId})}">All Lessons</a>
+    <a th:href="@{/logout}" style="float: right">Logout</a>
+</div>
+<div class="jumbotron jumbotron-fluid" style="background-color: ghostwhite">
+    <div class="container">
+        <h1 style="text-align: center; font-family: fantasy;" class="login">All Lessons</h1>
+        <hr>
+        <table border="2" class="table table-bordered table-responsive-md">
+            <thead>
+            <tr>
+                <th>Lesson Id</th>
+                <th>Lesson Name</th>
+                <th>Lesson Time</th>
+                <!--                <th>Actions</th>-->
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="lesson : ${lessonsList}">
+                <td th:text="${lesson.id}"></td>
+                <td th:text="${lesson.lessonName}"></td>
+                <td th:text="${lesson.lessonTime}"></td>
+                <!--<td>
+                    <a th:href="@{/tutor/lesson/create/{tutorId}/{classId}(tutorId=${tutorId},classId=${tutorClass.classId})}"
+                       class="btn btn-primary">Create Lesson</a>
+                    &lt;!&ndash;                    <a th:href="@{/file/delete/{id}(id=${file.id})}" class="btn btn-danger">Delete</a>&ndash;&gt;
+                </td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
